@@ -14,7 +14,7 @@ a {
 html {
     scroll-behavior: smooth;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color-scheme: dark light;
+    color-scheme: dark;
 }
 
 :root {
@@ -108,8 +108,11 @@ nav > span {
     align-items: center;
 }
 
-.grid-item {
+.grid-item-transition {
     transition: width .35s ease, height .35s ease;
+}
+
+.grid-item {
     padding: .7rem;
     width: 250px;
     height: 250px;
@@ -241,9 +244,114 @@ nav > span {
     text-align: center;
 }
 
-.grid-item:hover {
+.grid-item-transition:hover {
     width: 260px;
     height: 260px;
+}
+
+.input-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5%;
+    margin-bottom: 5px;
+}
+
+.range-div > div > input {
+    width: 50px;
+}
+
+.rect-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rect-container > * {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    border-radius: 25px;
+}
+
+.box-shadow-rect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+}
+
+.outline-or-inset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+}
+
+.switch > input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 1px;
+    bottom: 1px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.outline-or-inset-input:checked + .slider {
+    background-color: #2196F3;
+}
+
+.outline-or-inset-input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+.outline-or-inset-input:checked + .slider:before {
+    transform: translateX(13px);
+}
+
+.code-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(6, 224, 127, 0.50);
+    border-radius: 15px;
+    width: 470px;
+    height: 40px;
+}
+
+.code-result-span {
+    font-weight: bold;
 }
 
 @media screen and (max-width: 550px)  {
