@@ -38,89 +38,87 @@ let resultElement;
 // --------------
 
 document.addEventListener("DOMContentLoaded", () => {
-    switch(document.title) {
-        case "CSS Tools - boxshadow":
-            jsInitialize("boxshadow")
-            break;
-        case "CSS Tools - gradient":
-            jsInitialize("gradient");
-            break;
-        case "CSS Tools - border":
-            jsInitialize("border");
-            break;
-        case "CSS Tools - glassmorphism":
-            jsInitialize("glassmorphism");
-            break;
-        default:
-            console.log('bad documentTitle, i need to fix that (fuck this language)');
-    }
+    // switch(document.title) {
+    //     case "CSS Tools - boxshadow":
+    //         jsInitialize("boxshadow")
+    //         break;
+    //     case "CSS Tools - gradient":
+    //         jsInitialize("gradient");
+    //         break;
+    //     case "CSS Tools - border":
+    //         jsInitialize("border");
+    //         break;
+    //     case "CSS Tools - glassmorphism":
+    //         jsInitialize("glassmorphism");
+    //         break;
+    //     default:
+    //         console.log('bad documentTitle, i need to fix that (fuck this language)');
+    // }
+    jsInitialize();
 });
 
-function jsInitialize(arg) {
-    switch(arg) {
-        case "boxshadow":
-            shadowColorNumber = document.querySelector('.shadow-color-picker');
-            shadowColorPicker = document.querySelector('.shadow-color-text')
-            shadowColorNumber.value = shadowColor;
-            shadowColorPicker.value = shadowColor;
+function jsInitialize() { //jsInitialize(arg)
+    // switch(arg) {
+    //     case "boxshadow":
+    //         break;
+    //     case "gradient":
+    //         break;
+    //     case "border":
+    //         break;
+    //     case "glassmorphism":
+    //         break;
+    //     default:
+    //         console.log("this will never happen");
+    // }
+    shadowColorNumber = document.querySelector('.shadow-color-picker');
+    shadowColorPicker = document.querySelector('.shadow-color-text')
+    shadowColorNumber.value = shadowColor;
+    shadowColorPicker.value = shadowColor;
 
-            backgroundColorNumber = document.querySelector('.background-color-picker');
-            backgroundColorPicker = document.querySelector('.background-color-text')
-            backgroundColorNumber.value = backgroundColor;
-            backgroundColorPicker.value = backgroundColor;
+    backgroundColorNumber = document.querySelector('.background-color-picker');
+    backgroundColorPicker = document.querySelector('.background-color-text')
+    backgroundColorNumber.value = backgroundColor;
+    backgroundColorPicker.value = backgroundColor;
 
-            boxColorNumber = document.querySelector('.box-color-picker');
-            boxColorPicker = document.querySelector('.box-color-text')
-            boxColorNumber.value = boxColor;
-            boxColorPicker.value = boxColor;
+    boxColorNumber = document.querySelector('.box-color-picker');
+    boxColorPicker = document.querySelector('.box-color-text')
+    boxColorNumber.value = boxColor;
+    boxColorPicker.value = boxColor;
 
-            horizontalLengthNumber = document.querySelector('.horizontal-length-number');
-            horizontalLengthRange = document.querySelector('.horizontal-length-range');
-            horizontalLengthNumber.value = horizontalLength;
-            horizontalLengthRange.value = horizontalLength;
+    horizontalLengthNumber = document.querySelector('.horizontal-length-number');
+    horizontalLengthRange = document.querySelector('.horizontal-length-range');
+    horizontalLengthNumber.value = horizontalLength;
+    horizontalLengthRange.value = horizontalLength;
 
-            verticalLengthNumber = document.querySelector('.vertical-length-number');
-            verticalLengthRange = document.querySelector('.vertical-length-range');
-            verticalLengthNumber.value = verticalLength;
-            verticalLengthRange.value = verticalLength;
+    verticalLengthNumber = document.querySelector('.vertical-length-number');
+    verticalLengthRange = document.querySelector('.vertical-length-range');
+    verticalLengthNumber.value = verticalLength;
+    verticalLengthRange.value = verticalLength;
 
-            blurRadiusNumber = document.querySelector('.blur-radius-number');
-            blurRadiusRange = document.querySelector('.blur-radius-range');
-            blurRadiusNumber.value = blurRadius;
-            blurRadiusRange.value = blurRadius;
+    blurRadiusNumber = document.querySelector('.blur-radius-number');
+    blurRadiusRange = document.querySelector('.blur-radius-range');
+    blurRadiusNumber.value = blurRadius;
+    blurRadiusRange.value = blurRadius;
 
-            spreadRadiusNumber = document.querySelector('.spread-radius-number');
-            spreadRadiusRange = document.querySelector('.spread-radius-range');
-            spreadRadiusNumber.value = spreadRadius;
-            spreadRadiusRange.value = spreadRadius;
+    spreadRadiusNumber = document.querySelector('.spread-radius-number');
+    spreadRadiusRange = document.querySelector('.spread-radius-range');
+    spreadRadiusNumber.value = spreadRadius;
+    spreadRadiusRange.value = spreadRadius;
 
-            opacityNumber = document.querySelector('.opacity-number');
-            opacityRange = document.querySelector('.opacity-range');
-            opacityNumber.value = opacity;
-            opacityRange.value = opacity;
+    opacityNumber = document.querySelector('.opacity-number');
+    opacityRange = document.querySelector('.opacity-range');
+    opacityNumber.value = opacity;
+    opacityRange.value = opacity;
 
-            outlineOrInsetCheckbox = document.querySelector('.outline-or-inset-input');
+    outlineOrInsetCheckbox = document.querySelector('.outline-or-inset-input');
 
-            rangeElements = [horizontalLengthRange, verticalLengthRange, blurRadiusRange, spreadRadiusRange, opacityRange];
-            pickerElements = [shadowColorPicker, backgroundColorPicker, boxColorPicker];
+    rangeElements = [horizontalLengthRange, verticalLengthRange, blurRadiusRange, spreadRadiusRange, opacityRange];
+    pickerElements = [shadowColorPicker, backgroundColorPicker, boxColorPicker];
 
-            rect = document.querySelector('.box-shadow-rect');
-            setRectStyle();
+    rect = document.querySelector('.box-shadow-rect');
+    setRectStyle();
 
-            addFunctionality();
-            break;
-        case "gradient":
-
-            break;
-        case "border":
-            
-            break;
-        case "glassmorphism":
-
-            break;
-        default:
-            console.log("this will never happen");
-    }
+    addFunctionality();
 }
 
 function addFunctionality() {
@@ -132,7 +130,6 @@ function addFunctionality() {
         })
         elementNumber.addEventListener("input", () => {
             element.value = elementNumber.value;
-            // console.log(elementNumber.value);
             setRectVariableValues(element);
         })
     }
@@ -182,9 +179,7 @@ function setRectVariableValues(element) {
         shadowColor = element.value;
     } else if (element.className === "opacity-number" || element.className === "opacity-range") {
         opacity = element.value;
-    } else if (element.className === "outline-or-inset-input") {
-        console.log('xd');
-    }
+    } 
 
     setRectStyle();
 }
