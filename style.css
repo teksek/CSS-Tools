@@ -139,7 +139,6 @@ nav > span {
     width: 80px;
     height: 80px;
     background-color: var(--red);
-    /* transition: all .5s ease; */
     animation: infinite 5s shadow-animation;
 }
 
@@ -186,9 +185,6 @@ nav > span {
         border: 18px double var(--red);
         border-radius: 107px 3px 2px 9px;
     }
-    /* 95% {
-
-    } */
 }
 
 @keyframes glassmorphism-animation {
@@ -243,12 +239,6 @@ footer > span {
     display: flex;
     flex-direction: column;
 }
-
-/* .image-box-rect:hover {
-    animation: .5s bg-animation;
-    box-shadow: -5px 5px 3px #53a6ff;
-    background-color: var(--blue);
-} */
 
 .grid-item > span {
     display: flex;
@@ -427,9 +417,27 @@ footer > span {
     background: linear-gradient(90deg, var(--blue) 0%, var(--red) 100%);
 }
 
-.color-picker {
+.color-input1, .color-input2, .color-input3, .color-input4, .color-input5, .color-input6 {
     margin-right: 7px;
     height: 22px;
+}
+
+.bigger-gradient-box-container {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background-color: rgba(128, 128, 128, 0.192);
+}
+
+.bigger-gradient-box {
+    position: absolute;
+    top: 15%;
+    left: 13%;
+    width: 75%;
+    height: 75%;
+    background-color: rgba(128, 128, 128, 0.192);
 }
 
 @media screen and (max-width: 550px)  {

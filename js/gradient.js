@@ -329,7 +329,7 @@ function render(element) {
     }
 }
 
-function removeLeavings() { 
+function removeLeavings() {
     colorNumber = 0;
     let resultBlock = inputsDiv.querySelector('.result-block');
     if(resultBlock) {
@@ -452,7 +452,6 @@ class Color {
 
         let colorInput = document.createElement('input');
         colorInput.setAttribute('type', "color");
-        colorInput.classList.add("color-picker");
         colorInput.classList.add(`color-input${colorNumber}`);
 
         let colorNumberElement = document.createElement('input');
