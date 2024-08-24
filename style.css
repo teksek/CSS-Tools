@@ -415,6 +415,7 @@ footer > span {
     width: 300px;
     height: 300px;
     background: linear-gradient(90deg, var(--blue) 0%, var(--red) 100%);
+    cursor: pointer;
 }
 
 .color-input1, .color-input2, .color-input3, .color-input4, .color-input5, .color-input6 {
@@ -423,21 +424,48 @@ footer > span {
 }
 
 .bigger-gradient-box-container {
-    display: block;
+    display: inline-flex;
+    pointer-events: none;
     width: 100vw;
     height: 100vh;
     position: absolute;
     top: 0;
-    background-color: rgba(128, 128, 128, 0.192);
 }
 
 .bigger-gradient-box {
     position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.50s ease;
     top: 15%;
     left: 13%;
     width: 75%;
     height: 75%;
-    background-color: rgba(128, 128, 128, 0.192);
+}
+
+.x-close {
+    position: relative;
+    right: 0;
+    margin-left: auto;
+}
+
+.x-close > i {
+    font-size: 77px;
+    cursor: pointer;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.50s ease, .35s background-position ease-out;
+
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(45deg, var(--red), var(--yellow), var(--green), var(--blue));
+    border-radius: 15px;
+    background-size: 200%;
+}
+
+.x-close:hover {
+    background-position: right;
 }
 
 @media screen and (max-width: 550px)  {
@@ -475,7 +503,7 @@ footer > span {
     align-items: center;
     border-radius: 25px;
     background-color: #fff;
-    padding: 2rem 1.5rem 2rem 3rem; /* góra prawo dół lewo */
+    padding: 2rem 1.5rem 2rem 3rem;
     font-weight: bold;
     width: 100%;
 }

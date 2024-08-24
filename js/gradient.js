@@ -8,7 +8,11 @@ const linearBtn = document.querySelector("[name='linear']").addEventListener('cl
 const radialBtn = document.querySelector("[name='radial']").addEventListener('click', setRadial)
 const addColorBtn = document.querySelector("[name='addColor']").addEventListener('click', addColor);
 const removeColorBtn = document.querySelector("[name='removeColor']").addEventListener('click', removeColor);
-let rect = document.querySelector('.gradient-rect');
+const rect = document.querySelector('.gradient-rect');
+
+const biggerRectContainer = document.querySelector('.bigger-gradient-box-container');
+const biggerRect = document.querySelector('.bigger-gradient-box');
+const biggerRectCloseBtn = document.querySelector('.x-close > i');
 
 let angle = 90;
 
@@ -30,6 +34,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function jsInitialize() {
     setLinear();
+
+    rect.addEventListener('click', makeRectBigger);
+    biggerRectCloseBtn.addEventListener('click', makeRectSmaller);
+}
+
+function makeRectBigger() {
+    document.addEventListener('keydown', (e) => {
+        if(e.key === "Escape") {
+            makeRectSmaller();
+        }
+    });
+    let allOtherElements = document.querySelectorAll('body > *:not(.bigger-gradient-box-container)');
+    biggerRectContainer.style.pointerEvents = "all";
+
+    allOtherElements = Array.from(allOtherElements);
+    allOtherElements.forEach((element) => {
+        element.style.transition = "opacity 0.5s ease";
+        element.style.opacity = 0.1;
+    })
+
+    let elements = [biggerRect, biggerRectCloseBtn];
+    elements.forEach((element) => {
+        element.style.visibility = "visible";
+        element.style.opacity = 1;
+    });
+}
+
+function makeRectSmaller(listener) {
+    let allOtherElements = document.querySelectorAll('body > *:not(.bigger-gradient-box-container)');
+    biggerRectContainer.style.pointerEvents = "none";
+
+    allOtherElements = Array.from(allOtherElements);
+    allOtherElements.forEach((element) => {
+        element.style.opacity = 1;
+    })
+
+    let elements = [biggerRect, biggerRectCloseBtn];
+
+    elements.forEach((element) => {
+        element.style.opacity = 0;
+        rect.removeEventListener('click', makeRectBigger);
+        setTimeout(() => {
+            element.style.visibility = "hidden";
+            rect.addEventListener('click', makeRectBigger);
+        }, 500);
+    });
 }
 
 function setLinear() {
@@ -425,6 +475,7 @@ function setRectVariableValues(element) {
 function setRectStyle() {
     let HTMLstring = getCurrentGradientString();
     rect.style.background = HTMLstring;
+    biggerRect.style.background = HTMLstring;
     setResult(HTMLstring);
 }
 
